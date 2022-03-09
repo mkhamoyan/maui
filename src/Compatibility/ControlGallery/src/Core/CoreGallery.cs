@@ -21,6 +21,7 @@ using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Graphics;
 using AbsoluteLayoutFlags = Microsoft.Maui.Layouts.AbsoluteLayoutFlags;
 
@@ -93,7 +94,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			BarBackgroundColor = Colors.Maroon;
 			BarTextColor = Colors.Yellow;
 
-			Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+			Dispatcher.StartTimer(TimeSpan.FromSeconds(2), () =>
 			{
 				BarBackgroundColor = null;
 				BarTextColor = null;

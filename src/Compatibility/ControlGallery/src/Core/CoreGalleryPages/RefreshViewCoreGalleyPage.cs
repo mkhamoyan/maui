@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
+using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
@@ -110,7 +111,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 		{
 			IsRefreshing = true;
 
-			Device.StartTimer(TimeSpan.FromSeconds(RefreshDuration), () =>
+			Dispatcher.StartTimer(TimeSpan.FromSeconds(RefreshDuration), () =>
 			{
 				IsRefreshing = false;
 				Info = "Refreshed (Pull To Refresh again)";
