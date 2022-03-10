@@ -1207,6 +1207,17 @@ namespace Microsoft.Maui.Controls
 						return FlyoutBehavior.Flyout;
 					else if (rootItem is TabBar)
 						return FlyoutBehavior.Disabled;
+					// This means the user hasn't specified
+					// a ShellItem so we don't want the flyout to show up
+					// if there is only one ShellItem.
+					//
+					// This will happen if the user only specifies a
+					// single ContentPage
+					else if (rootItem != null && Routing.IsImplicit(rootItem))
+					{
+						if (Items.Count <= 1)
+							return FlyoutBehavior.Disabled;
+					}
 
 					return FlyoutBehavior;
 				},
@@ -1301,6 +1312,8 @@ namespace Microsoft.Maui.Controls
 			var behavior = GetEffectiveFlyoutBehavior();
 			for (int i = 0; i < _flyoutBehaviorObservers.Count; i++)
 				_flyoutBehaviorObservers[i].OnFlyoutBehaviorChanged(behavior);
+
+			Handler?.UpdateValue(nameof(IFlyoutView.FlyoutBehavior));
 		}
 
 		void OnFlyoutHeaderChanged(object oldVal, object newVal)
@@ -1479,6 +1492,13 @@ namespace Microsoft.Maui.Controls
 
 			protected override async Task<Page> OnPopModal(bool animated)
 			{
+				if (!_shell.NavigationManager.AccumulateNavigatedEvents)
+				{
+					var page = _shell.CurrentPage;
+					await _shell.GoToAsync("..", animated);
+					return page;
+				}
+
 				if (ModalStack.Count > 0)
 					ModalStack[ModalStack.Count - 1].SendDisappearing();
 
@@ -1499,6 +1519,14 @@ namespace Microsoft.Maui.Controls
 
 			protected override async Task OnPushModal(Page modal, bool animated)
 			{
+				if (!_shell.NavigationManager.AccumulateNavigatedEvents)
+				{
+					// This will route the modal push through the shell section which is setup
+					// to update the shell state after a modal push
+					await _shell.CurrentItem.CurrentItem.Navigation.PushModalAsync(modal, animated);
+					return;
+				}
+
 				if (ModalStack.Count == 0)
 					_shell.CurrentItem.SendDisappearing();
 
