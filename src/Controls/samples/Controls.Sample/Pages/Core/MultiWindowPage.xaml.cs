@@ -22,8 +22,9 @@ namespace Maui.Controls.Sample.Pages
 
 		void OnCloseWindowClicked(object sender, EventArgs e)
 		{
-			if (Window is not null)
-				Application.Current.CloseWindow(Window);
+			var window = this.GetParentWindow();
+			if (window is not null)
+				Application.Current.CloseWindow(window);
 		}
 	}
 }
