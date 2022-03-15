@@ -113,12 +113,14 @@ namespace Microsoft.Maui.Controls
 		public static Task<SynchronizationContext> GetMainThreadSynchronizationContextAsync() =>
 			Application.Current.FindDispatcher().GetSynchronizationContextAsync();
 
+		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='GetNamedSize'][2]/Docs" />
 		[Obsolete]
 		public static double GetNamedSize(NamedSize size, Element targetElement)
 		{
 			return GetNamedSize(size, targetElement.GetType());
 		}
 
+		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='GetNamedSize'][1]/Docs" />
 		[Obsolete]
 		public static double GetNamedSize(NamedSize size, Type targetElementType)
 		{
