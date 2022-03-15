@@ -44,7 +44,7 @@ namespace Microsoft.Maui
 		{
 		}
 
-		/// <include file="../../docs/Microsoft.Maui/Thickness.xml" path="//Member[@MemberName='.ctor'][0]/Docs" />
+		/// <include file="../../docs/Microsoft.Maui/Thickness.xml" path="//Member[@MemberName='.ctor'][3]/Docs" />
 		public Thickness(double left, double top, double right, double bottom) : this()
 		{
 			Left = left;

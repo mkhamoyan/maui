@@ -88,22 +88,22 @@ namespace Microsoft.Maui.Controls
 		public static void BeginInvokeOnMainThread(Action action) =>
 			Application.Current.FindDispatcher().Dispatch(action);
 
-		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='InvokeOnMainThreadAsync']/Docs" />
+		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='InvokeOnMainThreadAsync&lt;T&gt;'][2]/Docs" />
 		[Obsolete("Use BindableObject.Dispatcher.DispatchAsync() instead.")]
 		public static Task<T> InvokeOnMainThreadAsync<T>(Func<T> func) =>
 			Application.Current.FindDispatcher().DispatchAsync(func);
 
-		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='InvokeOnMainThreadAsync'][0]/Docs" />
+		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='InvokeOnMainThreadAsync'][1]/Docs" />
 		[Obsolete("Use BindableObject.Dispatcher.DispatchAsync() instead.")]
 		public static Task InvokeOnMainThreadAsync(Action action) =>
 			Application.Current.FindDispatcher().DispatchAsync(action);
 
-		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='InvokeOnMainThreadAsync']/Docs" />
+		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='InvokeOnMainThreadAsync&lt;T&gt;'][1]/Docs" />
 		[Obsolete("Use BindableObject.Dispatcher.DispatchAsync() instead.")]
 		public static Task<T> InvokeOnMainThreadAsync<T>(Func<Task<T>> funcTask) =>
 			Application.Current.FindDispatcher().DispatchAsync(funcTask);
 
-		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='InvokeOnMainThreadAsync']/Docs" />
+		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='InvokeOnMainThreadAsync'][2]/Docs" />
 		[Obsolete("Use BindableObject.Dispatcher.DispatchAsync() instead.")]
 		public static Task InvokeOnMainThreadAsync(Func<Task> funcTask) =>
 			Application.Current.FindDispatcher().DispatchAsync(funcTask);
@@ -113,14 +113,12 @@ namespace Microsoft.Maui.Controls
 		public static Task<SynchronizationContext> GetMainThreadSynchronizationContextAsync() =>
 			Application.Current.FindDispatcher().GetSynchronizationContextAsync();
 
-		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='GetNamedSize'][1]/Docs" />
 		[Obsolete]
 		public static double GetNamedSize(NamedSize size, Element targetElement)
 		{
 			return GetNamedSize(size, targetElement.GetType());
 		}
 
-		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='GetNamedSize'][0]/Docs" />
 		[Obsolete]
 		public static double GetNamedSize(NamedSize size, Type targetElementType)
 		{
@@ -138,7 +136,7 @@ namespace Microsoft.Maui.Controls
 			dispatcher.StartTimer(interval, callback);
 		}
 
-		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='GetNamedSize'][2]/Docs" />
+		/// <include file="../../docs/Microsoft.Maui.Controls/Device.xml" path="//Member[@MemberName='GetNamedSize'][3]/Docs" />
 		[Obsolete]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public static double GetNamedSize(NamedSize size, Type targetElementType, bool useOldSizes) =>

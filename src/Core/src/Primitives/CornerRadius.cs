@@ -25,7 +25,7 @@ namespace Microsoft.Maui
 		{
 		}
 
-		/// <include file="../../docs/Microsoft.Maui/CornerRadius.xml" path="//Member[@MemberName='.ctor'][0]/Docs" />
+		/// <include file="../../docs/Microsoft.Maui/CornerRadius.xml" path="//Member[@MemberName='.ctor'][2]/Docs" />
 		public CornerRadius(double topLeft, double topRight, double bottomLeft, double bottomRight)
 		{
 			_isParameterized = true;
